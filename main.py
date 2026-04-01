@@ -1,8 +1,7 @@
 from typing import List
-
-from llm_sdk.llm_sdk import Small_LLM_Model as LLM
 import json
-import torch
+from llm_sdk.llm_sdk import Small_LLM_Model
+
 
 def find_best(logits, amount):
     result = []
@@ -17,50 +16,27 @@ def find_best(logits, amount):
     return result
 
 
-
 def main():
-    llm = LLM()
+    llm = Small_LLM_Model()
     tests = json.load(open('data/input/function_calling_tests.json'))
-    for test in tests[:1]:
-        prompt = test.get('prompt')
-        print("Prompt:\n", prompt)
-        print("")
-        tokens: List = llm.encode(prompt)[0].tolist()
-        print(f"{tokens} \"{llm.decode(tokens)}\"")
-        #best = find_best(logits, 1)
-        #for logit in best:
-        #    print(llm.decode(logit[1]), end="")
-        for i in range (500):
-            logits = llm.get_logits_from_input_ids(tokens)
-            best = find_best(logits, 2)[1:]
-            for logit in best:
-                #print(llm.decode(logit[1]), end="")
-                tokens.append(logit[1])
-        print(llm.decode(tokens))
-            #print(llm.decode(llm.decode(tokens)), end="")
-        print("")
-        #for i in range(1,len(tokens)):
-        #    print(f"{tokens[:i]} \"{llm.decode(tokens[:i])}\"")
-        #    logits = llm.get_logits_from_input_ids(tokens[:i])
-        #    best = find_best(logits, 5)
-        #    for logit in best:
-        #        print(llm.decode(logit[1]), end=" ")
-        #    print("")
-
-        #logits = llm.get_logits_from_input_ids(tokens[0].tolist())
-        #for logit in find_best(logits, 5):
-        #    print(llm.decode([logit[1]]))
-        #print(llm.decode(logits))
-        #for token in tokens[0]:
-        #    print("Token", llm.decode(token.item()), end=" ")
-        #    logits = llm.get_logits_from_input_ids([token.item()])
-#
-        #    for logit in find_best(logits, 15):
-        #        print(llm.decode([logit[1]]), end=" ")
-        #    print("")
-        #logits = llm.get_logits_from_input_ids([token])
-        #probs = torch.softmax(torch.tensor(logits), dim=0)
-
-        #print(probs)
-
+    while True:
+        tests = [input("Prompt something:")]
+        for test in tests[:]:
+            prompt = test
+            #prompt = test.get('prompt')
+            tokens: List = llm.encode(prompt)[0].tolist()
+            tokens.append(llm.encode("\n")[0].tolist()[0])
+            extra_tokens = []
+            i = 0
+            while i < 100:
+                logits = llm.get_logits_from_input_ids(tokens+extra_tokens)
+                best = find_best(logits, 1)[:]
+                for logit in best:
+                    extra_tokens.append(logit[1])
+                    i += 1
+                    #if "." in llm.decode([logit[1]]):
+                        #i = 100
+            print(llm.decode(tokens))
+            print(llm.decode(extra_tokens))
+            print("\n\n")
 main()
