@@ -19,11 +19,13 @@ def find_best(logits, amount):
 def main():
     llm = Small_LLM_Model()
     tests = json.load(open('data/input/function_calling_tests.json'))
-    while True:
-        tests = [input("Prompt something:")]
+    cond = True
+    while cond:
+        cond = False
+        #tests = [input("Prompt something:")]
         for test in tests[:]:
-            prompt = test
-            #prompt = test.get('prompt')
+            #prompt = test
+            prompt = test.get('prompt')
             tokens: List = llm.encode(prompt)[0].tolist()
             tokens.append(llm.encode("\n")[0].tolist()[0])
             extra_tokens = []
@@ -34,8 +36,8 @@ def main():
                 for logit in best:
                     extra_tokens.append(logit[1])
                     i += 1
-                    #if "." in llm.decode([logit[1]]):
-                        #i = 100
+                    if "." in llm.decode([logit[1]]):
+                        i = 100
             print(llm.decode(tokens))
             print(llm.decode(extra_tokens))
             print("\n\n")
