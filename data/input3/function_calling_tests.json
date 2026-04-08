@@ -1,0 +1,60 @@
+[
+
+
+  { "prompt": "Replace all digits in 'abc123xyz456' with '#'" },
+  { "prompt": "Remove all spaces from 'Hello world program'" },
+  { "prompt": "Replace 'foo' with 'bar' in 'foo foo foo'" },
+  { "prompt": "Change all uppercase letters in 'AbCdEf' to '*'" },
+  { "prompt": "Replace vowels in 'hello world' with '_'" },
+  { "prompt": "Find square root for 1" },
+  { "prompt": "Calculate sqrt(400)" },
+  { "prompt": "Substitute every number in 'My number is 12345' with X" },
+  { "prompt": "Replace all 'a' letters in 'banana' with 'o'" },
+  { "prompt": "Replace all occurrences of 'test' with 'done' in 'test123test'" },
+
+  { "prompt": "What is 7 plus 8?" },
+  { "prompt": "Compute 50 + 70" },
+  { "prompt": "Add numbers 1000 and 2500" },
+
+  { "prompt": "Give me sqrt of 2" },
+  { "prompt": "What’s the square root of 0?" },
+
+  { "prompt": "Reverse empty string ''" },
+  { "prompt": "Reverse 'a'" },
+
+  { "prompt": "Greet user named Alex" },
+  { "prompt": "Say hi to Bob" },
+
+  { "prompt": "Replace all letters in '12345' with '*'" },
+  { "prompt": "Replace everything in 'hello' with '#'" },
+  { "prompt": "Replace all vowels in 'Programming is fun' with asterisks" },
+  { "prompt": "Substitute the word 'cat' with 'dog' in 'The cat sat on the mat with another cat'" },
+  { "prompt": "What is the sum of -2 and 3?" },
+  { "prompt": "What is the sum of 265 and 345?" },
+  { "prompt": "Greet shrek" },
+  { "prompt": "Greet john" },
+  { "prompt": "Reverse the string 'hello'" },
+  { "prompt": "Reverse the string 'world'" },
+  { "prompt": "What is the square root of 16?" },
+  { "prompt": "Calculate the square root of 144" },
+
+  { "prompt": "Add 10 and 15" },
+  { "prompt": "What do you get if you add 99 and 1?" },
+  { "prompt": "Sum 1234 and 4321" },
+  { "prompt": "Please add 0 and 5" },
+  { "prompt": "Add -5 and 20" },
+
+  { "prompt": "Say hello to Mike" },
+  { "prompt": "Generate greeting for Anna" },
+  { "prompt": "Can you greet Christopher?" },
+  { "prompt": "I want a greeting message for Kate" },
+
+  { "prompt": "Reverse 'OpenAI'" },
+  { "prompt": "Flip the string 'Java'" },
+  { "prompt": "Can you reverse '12345'?" },
+  { "prompt": "Reverse this: 'abcdef'" },
+
+  { "prompt": "Square root of 81" },
+  { "prompt": "What is sqrt of 225?" }
+
+]

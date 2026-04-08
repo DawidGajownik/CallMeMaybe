@@ -1,0 +1,302 @@
+[
+  {
+    "function": "fn_string_length",
+    "arguments": {
+      "input": "Hello world program"
+    }
+  },
+  {
+    "function": "fn_substitute_string_with_regex",
+    "arguments": {
+      "source_string": "foo foo foo",
+      "regex": "foo",
+      "replacement": "bar"
+    }
+  },
+  {
+    "function": "fn_substitute_string_with_regex",
+    "arguments": {
+      "source_string": "AbCdEf",
+      "regex": "([A-Z][a-z])",
+      "replacement": " * "
+    }
+  },
+  {
+    "function": "fn_substitute_string_with_regex",
+    "arguments": {
+      "source_string": "hello world",
+      "regex": "([aeiouAEIOU])",
+      "replacement": " _ "
+    }
+  },
+  {
+    "function": "fn_get_square_root",
+    "arguments": {
+      "a": 1
+    }
+  },
+  {
+    "function": "fn_get_square_root",
+    "arguments": {
+      "a": 400
+    }
+  },
+  {
+    "function": "fn_substitute_string_with_regex",
+    "arguments": {
+      "source_string": "My number is 12345",
+      "regex": "([0-9]+)",
+      "replacement": "X"
+    }
+  },
+  {
+    "function": "fn_substitute_string_with_regex",
+    "arguments": {
+      "source_string": "banana",
+      "regex": "a",
+      "replacement": "o"
+    }
+  },
+  {
+    "function": "fn_substitute_string_with_regex",
+    "arguments": {
+      "source_string": "test123test",
+      "regex": "test",
+      "replacement": "done"
+    }
+  },
+  {
+    "function": "fn_add_numbers",
+    "arguments": {
+      "a": 7.0,
+      "b": 8.0
+    }
+  },
+  {
+    "function": "fn_add_numbers",
+    "arguments": {
+      "a": 50.0,
+      "b": 70.0
+    }
+  },
+  {
+    "function": "fn_add_numbers",
+    "arguments": {
+      "a": 1000.0,
+      "b": 2500.0
+    }
+  },
+  {
+    "function": "fn_get_square_root",
+    "arguments": {
+      "a": 2
+    }
+  },
+  {
+    "function": "fn_get_square_root",
+    "arguments": {
+      "a": 0
+    }
+  },
+  {
+    "function": "fn_reverse_string",
+    "arguments": {
+      "s": " "
+    }
+  },
+  {
+    "function": "fn_reverse_string",
+    "arguments": {
+      "s": "a"
+    }
+  },
+  {
+    "function": "fn_greet",
+    "arguments": {
+      "name": "Alex"
+    }
+  },
+  {
+    "function": "fn_greet",
+    "arguments": {
+      "name": "Bob"
+    }
+  },
+  {
+    "function": "fn_substitute_string_with_regex",
+    "arguments": {
+      "source_string": "12345",
+      "regex": ".*",
+      "replacement": " *"
+    }
+  },
+  {
+    "function": "fn_substitute_string_with_regex",
+    "arguments": {
+      "source_string": "hello",
+      "regex": "hello",
+      "replacement": "##"
+    }
+  },
+  {
+    "function": "fn_substitute_string_with_regex",
+    "arguments": {
+      "source_string": "Programming is fun",
+      "regex": "([aeiou])",
+      "replacement": "asterisk"
+    }
+  },
+  {
+    "function": "fn_substitute_string_with_regex",
+    "arguments": {
+      "source_string": "The cat sat on the mat with another cat",
+      "regex": "cat",
+      "replacement": "dog"
+    }
+  },
+  {
+    "function": "fn_add_numbers",
+    "arguments": {
+      "a": -2.0,
+      "b": 3.0
+    }
+  },
+  {
+    "function": "fn_add_numbers",
+    "arguments": {
+      "a": 265.0,
+      "b": 345.0
+    }
+  },
+  {
+    "function": "fn_greet",
+    "arguments": {
+      "name": "shrek"
+    }
+  },
+  {
+    "function": "fn_greet",
+    "arguments": {
+      "name": "john"
+    }
+  },
+  {
+    "function": "fn_reverse_string",
+    "arguments": {
+      "s": "hello"
+    }
+  },
+  {
+    "function": "fn_reverse_string",
+    "arguments": {
+      "s": "world"
+    }
+  },
+  {
+    "function": "fn_get_square_root",
+    "arguments": {
+      "a": 16
+    }
+  },
+  {
+    "function": "fn_get_square_root",
+    "arguments": {
+      "a": 144
+    }
+  },
+  {
+    "function": "fn_add_numbers",
+    "arguments": {
+      "a": 10.0,
+      "b": 15.0
+    }
+  },
+  {
+    "function": "fn_add_numbers",
+    "arguments": {
+      "a": 99.0,
+      "b": 1.0
+    }
+  },
+  {
+    "function": "fn_add_numbers",
+    "arguments": {
+      "a": 1234.0,
+      "b": 4321.0
+    }
+  },
+  {
+    "function": "fn_add_numbers",
+    "arguments": {
+      "a": 0.0,
+      "b": 5.0
+    }
+  },
+  {
+    "function": "fn_add_numbers",
+    "arguments": {
+      "a": -5.0,
+      "b": 20.0
+    }
+  },
+  {
+    "function": "fn_greet",
+    "arguments": {
+      "name": "Mike"
+    }
+  },
+  {
+    "function": "fn_greet",
+    "arguments": {
+      "name": "Anna"
+    }
+  },
+  {
+    "function": "fn_greet",
+    "arguments": {
+      "name": "Christopher"
+    }
+  },
+  {
+    "function": "fn_greet",
+    "arguments": {
+      "name": "Kate"
+    }
+  },
+  {
+    "function": "fn_reverse_string",
+    "arguments": {
+      "s": "OpenAI"
+    }
+  },
+  {
+    "function": "fn_reverse_string",
+    "arguments": {
+      "s": "Java"
+    }
+  },
+  {
+    "function": "fn_reverse_string",
+    "arguments": {
+      "s": "12345"
+    }
+  },
+  {
+    "function": "fn_reverse_string",
+    "arguments": {
+      "s": "abcdef"
+    }
+  },
+  {
+    "function": "fn_get_square_root",
+    "arguments": {
+      "a": 81
+    }
+  },
+  {
+    "function": "fn_get_square_root",
+    "arguments": {
+      "a": 225
+    }
+  }
+]
