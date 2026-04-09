@@ -1,35 +1,41 @@
 [
   {
-    "prompt": "What is the sum of 2 and 3?"
+    "prompt": "What is the sum of three and seven?"
+  },
+  {
+    "prompt": "What is the sum of kebab and burger?"
+  },
+  {
+    "prompt": "What is the sum of -999999999999999999999 and 9999999999999999999?"
   },
   {
     "prompt": "What is the sum of 265 and 345?"
   },
   {
-    "prompt": "Greet shrek"
+    "prompt": "Greet somebody"
   },
   {
-    "prompt": "Greet john"
+    "prompt": "Greet a7"
   },
   {
-    "prompt": "Reverse the string 'hello'"
+    "prompt": "Reverse the string"
   },
   {
-    "prompt": "Reverse the string 'world'"
+    "prompt": "Reverse the string 'Reverse the string'"
   },
   {
-    "prompt": "What is the square root of 16?"
+    "prompt": "What is the square root of qwerty?"
   },
   {
-    "prompt": "Calculate the square root of 144"
+    "prompt": "Calculate the square root of zxcvbn"
   },
   {
-    "prompt": "Replace all numbers in \"Hello 34 I'm 233 years old\" with NUMBERS"
+    "prompt": "Replace all numbers in \"Siema\" with dots"
   },
   {
-    "prompt": "Replace all vowels in 'Programming is fun' with asterisks"
+    "prompt": "Replace all vowels in '123456' with comas"
   },
   {
-    "prompt": "Substitute the word 'cat' with 'dog' in 'The cat sat on the mat with another cat'"
+    "prompt": "Substitute the word 'dog' with 'dog' in 'The cat sat on the mat with another cat'"
   }
 ]

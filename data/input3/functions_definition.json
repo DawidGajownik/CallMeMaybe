@@ -84,5 +84,167 @@
       "exponent": { "type": "number" }
     },
     "returns": { "type": "number" }
+  },
+  {
+    "name": "fn_divide_numbers",
+    "description": "Divide two numbers and return the quotient.",
+    "parameters": {
+      "dividend": { "type": "number" },
+      "divisor": { "type": "number" }
+    },
+    "returns": { "type": "number" }
+  },
+  {
+    "name": "fn_modulo",
+    "description": "Return the remainder of dividing two numbers.",
+    "parameters": {
+      "a": { "type": "number" },
+      "b": { "type": "number" }
+    },
+    "returns": { "type": "number" }
+  },
+  {
+    "name": "fn_absolute_value",
+    "description": "Return the absolute value of a number.",
+    "parameters": {
+      "num": { "type": "number" }
+    },
+    "returns": { "type": "number" }
+  },
+  {
+    "name": "fn_string_concat",
+    "description": "Concatenate two strings together.",
+    "parameters": {
+      "str1": { "type": "string" },
+      "str2": { "type": "string" }
+    },
+    "returns": { "type": "string" }
+  },
+  {
+    "name": "fn_string_contains",
+    "description": "Check if a string contains a substring.",
+    "parameters": {
+      "source": { "type": "string" },
+      "substring": { "type": "string" }
+    },
+    "returns": { "type": "boolean" }
+  },
+  {
+    "name": "fn_string_split",
+    "description": "Split a string by a delimiter and return array of parts.",
+    "parameters": {
+      "text": { "type": "string" },
+      "delimiter": { "type": "string" }
+    },
+    "returns": { "type": "array" }
+  },
+  {
+    "name": "fn_count_vowels",
+    "description": "Count the number of vowels in a string.",
+    "parameters": {
+      "text": { "type": "string" }
+    },
+    "returns": { "type": "number" }
+  },
+  {
+    "name": "fn_is_palindrome",
+    "description": "Check if a string is a palindrome.",
+    "parameters": {
+      "text": { "type": "string" }
+    },
+    "returns": { "type": "boolean" }
+  },
+  {
+    "name": "fn_trim_whitespace",
+    "description": "Remove leading and trailing whitespace from a string.",
+    "parameters": {
+      "text": { "type": "string" }
+    },
+    "returns": { "type": "string" }
+  },
+  {
+    "name": "fn_max_of_three",
+    "description": "Return the maximum of three numbers.",
+    "parameters": {
+      "a": { "type": "number" },
+      "b": { "type": "number" },
+      "c": { "type": "number" }
+    },
+    "returns": { "type": "number" }
+  },
+  {
+    "name": "fn_min_of_three",
+    "description": "Return the minimum of three numbers.",
+    "parameters": {
+      "a": { "type": "number" },
+      "b": { "type": "number" },
+      "c": { "type": "number" }
+    },
+    "returns": { "type": "number" }
+  },
+  {
+    "name": "fn_is_even",
+    "description": "Check if a number is even.",
+    "parameters": {
+      "num": { "type": "number" }
+    },
+    "returns": { "type": "boolean" }
+  },
+  {
+    "name": "fn_is_odd",
+    "description": "Check if a number is odd.",
+    "parameters": {
+      "num": { "type": "number" }
+    },
+    "returns": { "type": "boolean" }
+  },
+  {
+    "name": "fn_factorial",
+    "description": "Calculate the factorial of a number.",
+    "parameters": {
+      "n": { "type": "number" }
+    },
+    "returns": { "type": "number" }
+  },
+  {
+    "name": "fn_is_prime",
+    "description": "Check if a number is prime.",
+    "parameters": {
+      "num": { "type": "number" }
+    },
+    "returns": { "type": "boolean" }
+  },
+  {
+    "name": "fn_celsius_to_fahrenheit",
+    "description": "Convert temperature from Celsius to Fahrenheit.",
+    "parameters": {
+      "celsius": { "type": "number" }
+    },
+    "returns": { "type": "number" }
+  },
+  {
+    "name": "fn_fahrenheit_to_celsius",
+    "description": "Convert temperature from Fahrenheit to Celsius.",
+    "parameters": {
+      "fahrenheit": { "type": "number" }
+    },
+    "returns": { "type": "number" }
+  },
+  {
+    "name": "fn_capitalize_first_letter",
+    "description": "Capitalize the first letter of a string.",
+    "parameters": {
+      "text": { "type": "string" }
+    },
+    "returns": { "type": "string" }
+  },
+  {
+    "name": "fn_repeat_string",
+    "description": "Repeat a string a given number of times.",
+    "parameters": {
+      "text": { "type": "string" },
+      "times": { "type": "number" }
+    },
+    "returns": { "type": "string" }
   }
 ]

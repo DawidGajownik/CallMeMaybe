@@ -31,8 +31,13 @@ class Function:
         parameters = line["parameters"]
         params = []
         for parameter in parameters:
-            params.append((parameter, parameters[parameter]["type"]))
+            param_type = parameters[parameter]["type"]
+            if param_type in ["number","string"]:
+                params.append((parameter, param_type))
+            else:
+                raise ValueError(param_type, "is not a proper parameter type")
             #params[parameter] = parameters[parameter]["type"]
+        print(params)
         return cls(name, desc, params)
 
     def to_prompt(self) -> str:

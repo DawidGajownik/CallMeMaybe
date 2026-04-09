@@ -1,4 +1,5 @@
 import shlex
+import sys
 from cmath import inf
 from typing import List
 import json
@@ -126,7 +127,9 @@ def allowed_tokens(state, functions, selected_function, test: str):
         ]
         if selected_function.is_last_param():
             nums.extend(['}', '}}'])
-        return nums if choice == "number" else shlex.split(test)+['"', ", "] if choice == "string" else None
+        if choice not in ["number", "string"]:
+            raise ValueError(choice, "is not a proper argument type.")
+        return nums if choice == "number" else shlex.split(test)+['"', ", "]
     if state == State.DONE:
         return ["}"]
     return []
@@ -173,11 +176,17 @@ def argument_finished(selected_fn, extra_tokens_dict, llm, test):
 
 
 def main():
+    try:
+        tests = json.load(open('data/input/function_calling_tests.json'))
+        functions = json.load(open('data/input/functions_definition.json'))
+        functions_list = [Function.create(f) for f in functions]
+        prompts = build_prompt(functions_list)
+    except KeyError as e:
+        print(e)
+        sys.exit(1)
+    except ValueError as e:
+        print(e)
     llm = Small_LLM_Model()
-    tests = json.load(open('data/input/function_calling_tests.json'))
-    functions = json.load(open('data/input/functions_definition.json'))
-    functions_list = [Function.create(f) for f in functions]
-    prompts = build_prompt(functions_list)
     results = []
     for test in tests:
         for function in functions_list:
@@ -190,9 +199,12 @@ def main():
         i = 0
         state = State.START
         selected_fn = None
-        while i < 100:
+        while i < 150:
             logits = llm.get_logits_from_input_ids(tokens+extra_tokens)
-            allowed = allowed_tokens(state, functions_list, selected_fn, test.get('prompt'))
+            try:
+                allowed = allowed_tokens(state, functions_list, selected_fn, test.get('prompt'))
+            except ValueError as e:
+                print(e)
             masked_logits = [-inf] * len(logits)
             for item in allowed:
                 for idx in llm.encode(item).tolist()[0]:
@@ -255,7 +267,7 @@ def main():
                 extra_tokens.extend(extra_tokens_dict[State.DONE])
                 i += 1
                 if "}}" in llm.decode(extra_tokens):
-                    i = 100
+                    i = 150
             if state == State.ARGUMENTS_KEY:
                 selected_fn = set_function(functions_list, llm.decode(extra_tokens))
             print(state, llm.decode(extra_tokens))

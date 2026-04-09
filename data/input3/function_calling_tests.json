@@ -1,6 +1,7 @@
 [
 
-
+  { "prompt": ""},
+  { "prompt": "Siemano"},
   { "prompt": "Replace all digits in 'abc123xyz456' with '#'" },
   { "prompt": "Remove all spaces from 'Hello world program'" },
   { "prompt": "Replace 'foo' with 'bar' in 'foo foo foo'" },
@@ -55,6 +56,86 @@
   { "prompt": "Reverse this: 'abcdef'" },
 
   { "prompt": "Square root of 81" },
-  { "prompt": "What is sqrt of 225?" }
+  { "prompt": "What is sqrt of 225?" },
+
+  { "prompt": "Divide 100 by 5" },
+  { "prompt": "What is 50 divided by 2?" },
+  { "prompt": "Calculate 1000 / 25" },
+
+  { "prompt": "What is 17 modulo 5?" },
+  { "prompt": "Get the remainder when 100 is divided by 7" },
+  { "prompt": "Calculate 23 mod 4" },
+
+  { "prompt": "What is the absolute value of -42?" },
+  { "prompt": "Get absolute value of -3.14" },
+  { "prompt": "Absolute value of 15" },
+
+  { "prompt": "Concatenate 'Hello' and 'World'" },
+  { "prompt": "Combine 'Good' with 'Morning'" },
+  { "prompt": "Join 'Python' and 'Programming'" },
+
+  { "prompt": "Does 'hello world' contain 'world'?" },
+  { "prompt": "Check if 'programming' contains 'gram'" },
+  { "prompt": "Is 'OpenAI' in the string 'OpenAI GPT'?" },
+
+  { "prompt": "Split 'apple,banana,cherry' by comma" },
+  { "prompt": "Split 'one-two-three' by hyphen" },
+  { "prompt": "Split 'hello world test' by space" },
+
+  { "prompt": "Count vowels in 'hello'" },
+  { "prompt": "How many vowels in 'beautiful'?" },
+  { "prompt": "Count vowels in 'programming'" },
+
+  { "prompt": "Is 'racecar' a palindrome?" },
+  { "prompt": "Check if 'madam' is a palindrome" },
+  { "prompt": "Is 'hello' a palindrome?" },
+
+  { "prompt": "Trim whitespace from '  hello  '" },
+  { "prompt": "Remove leading and trailing spaces from '   world   '" },
+  { "prompt": "Trim '  test  '" },
+
+  { "prompt": "What is the maximum of 10, 25, and 15?" },
+  { "prompt": "Find max among 100, 50, 75" },
+  { "prompt": "Maximum of 3, 7, 2" },
+
+  { "prompt": "What is the minimum of 10, 25, and 15?" },
+  { "prompt": "Find min among 100, 50, 75" },
+  { "prompt": "Minimum of 3, 7, 2" },
+
+  { "prompt": "Is 4 even?" },
+  { "prompt": "Check if 42 is even" },
+  { "prompt": "Is 7 even?" },
+
+  { "prompt": "Is 7 odd?" },
+  { "prompt": "Check if 13 is odd" },
+  { "prompt": "Is 100 odd?" },
+
+  { "prompt": "Calculate factorial of 5" },
+  { "prompt": "What is 6 factorial?" },
+  { "prompt": "Calculate 4!" },
+
+  { "prompt": "Is 17 a prime number?" },
+  { "prompt": "Check if 2 is prime" },
+  { "prompt": "Is 100 prime?" },
+
+  { "prompt": "Convert 0 Celsius to Fahrenheit" },
+  { "prompt": "What is 100 Celsius in Fahrenheit?" },
+  { "prompt": "Convert 25 degrees Celsius to Fahrenheit" },
+
+  { "prompt": "Convert 32 Fahrenheit to Celsius" },
+  { "prompt": "What is 212 Fahrenheit in Celsius?" },
+  { "prompt": "Convert 98.6 degrees Fahrenheit to Celsius" },
+
+  { "prompt": "Capitalize 'hello world'" },
+  { "prompt": "Capitalize first letter of 'python'" },
+  { "prompt": "Make first letter uppercase in 'openai'" },
+
+  { "prompt": "Repeat 'hi' 5 times" },
+  { "prompt": "Repeat 'x' 3 times" },
+  { "prompt": "Repeat the string 'abc' 4 times" },
+
+  { "prompt": "2 to the power of 8" },
+  { "prompt": "What is 3 raised to power 4?" },
+  { "prompt": "Calculate 5^3" }
 
 ]
