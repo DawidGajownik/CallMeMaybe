@@ -1,13 +1,28 @@
-from typing import Dict, List
+from typing import Dict, List, Tuple, Optional
+from pydantic import BaseModel, field_validator
 
 
-class Function:
-    def __init__(self, name: str, desc: str, params: List):
-        self.name = name
-        self.desc = desc
-        self.params = params
+class Function(BaseModel):
+    name: str
+    desc: str
+    params: List[Tuple[str, str]]
+
+    # pola pomocnicze (nie wejściowe)
+    param_counter: int = 0
+    param: int = 0
+
+    def model_post_init(self, __context):
         self.param_counter = len(self.params) - 1
         self.param = 0
+
+    @field_validator("params")
+    @classmethod
+    def validate_params(cls, value: List[Tuple[str, str]]):
+        allowed_types = {"number", "string"}
+        for name, param_type in value:
+            if param_type not in allowed_types:
+                raise ValueError(f"{param_type} is not a proper parameter type")
+        return value
 
     def get_actual_param(self):
         return self.params[self.param]
@@ -32,13 +47,8 @@ class Function:
         params = []
         for parameter in parameters:
             param_type = parameters[parameter]["type"]
-            if param_type in ["number","string"]:
-                params.append((parameter, param_type))
-            else:
-                raise ValueError(param_type, "is not a proper parameter type")
-            #params[parameter] = parameters[parameter]["type"]
-        print(params)
-        return cls(name, desc, params)
+            params.append((parameter, param_type))
+        return cls(name=name, desc=desc, params=params)
 
     def to_prompt(self) -> str:
         params_str = ", ".join(f"{k}: {v}" for k, v in self.params)

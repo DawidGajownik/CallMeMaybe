@@ -1,62 +1,806 @@
 [
   {
-    "prompt": "Greet somebody",
+    "prompt": "",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": 2.0,
+      "b": 3.0
+    }
+  },
+  {
+    "prompt": "Siemano",
     "name": "fn_greet",
     "parameters": {
-      "name": "somebody"
+      "name": "Siemano"
     }
   },
   {
-    "prompt": "Greet a7",
-    "name": "fn_greet",
-    "parameters": {
-      "name": "a7"
-    }
-  },
-  {
-    "prompt": "Reverse the string",
-    "name": "fn_reverse_string",
-    "parameters": {
-      "s": "string"
-    }
-  },
-  {
-    "prompt": "Reverse the string 'Reverse the string'",
-    "name": "fn_reverse_string",
-    "parameters": {
-      "s": "Reverse the string"
-    }
-  },
-  {
-    "prompt": "What is the square root of qwerty?",
-    "name": "fn_get_square_root",
-    "parameters": {
-      "a": 170.0
-    }
-  },
-  {
-    "prompt": "Calculate the square root of zxcvbn",
-    "name": "fn_get_square_root",
-    "parameters": {
-      "a": 1234567890.0
-    }
-  },
-  {
-    "prompt": "Replace all vowels in '123456' with comas",
+    "prompt": "Replace all digits in 'abc123xyz456' with '#'",
     "name": "fn_substitute_string_with_regex",
     "parameters": {
-      "source_string": "123456",
-      "regex": "([aeiouAEIOU])",
-      "replacement": ","
+      "source_string": "abc123xyz456",
+      "regex": "digits",
+      "replacement": "#"
     }
   },
   {
-    "prompt": "Substitute the word 'dog' with 'dog' in 'The cat sat on the mat with another cat'",
+    "prompt": "Remove all spaces from 'Hello world program'",
+    "name": "fn_trim_whitespace",
+    "parameters": {
+      "text": "Hello world program"
+    }
+  },
+  {
+    "prompt": "Replace 'foo' with 'bar' in 'foo foo foo'",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "foo foo foo",
+      "regex": "foo",
+      "replacement": "bar"
+    }
+  },
+  {
+    "prompt": "Change all uppercase letters in 'AbCdEf' to '*'",
+    "name": "fn_to_uppercase",
+    "parameters": {
+      "input": "AbCdEf"
+    }
+  },
+  {
+    "prompt": "Replace vowels in 'hello world' with '_'",
+    "name": "fn_count_vowels",
+    "parameters": {
+      "text": "hello world"
+    }
+  },
+  {
+    "prompt": "Find square root for 1",
+    "name": "fn_get_square_root",
+    "parameters": {
+      "a": 1.0
+    }
+  },
+  {
+    "prompt": "Calculate sqrt(400)",
+    "name": "fn_get_square_root",
+    "parameters": {
+      "a": 400.0
+    }
+  },
+  {
+    "prompt": "Substitute every number in 'My number is 12345' with X",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "My number is 12345",
+      "regex": "([0-9]+)",
+      "replacement": "X"
+    }
+  },
+  {
+    "prompt": "Replace all 'a' letters in 'banana' with 'o'",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "banana",
+      "regex": "a",
+      "replacement": "o"
+    }
+  },
+  {
+    "prompt": "Replace all occurrences of 'test' with 'done' in 'test123test'",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "test123test",
+      "regex": "test",
+      "replacement": "done"
+    }
+  },
+  {
+    "prompt": "What is 7 plus 8?",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": 7.0,
+      "b": 8.0
+    }
+  },
+  {
+    "prompt": "Compute 50 + 70",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": 50.0,
+      "b": 70.0
+    }
+  },
+  {
+    "prompt": "Add numbers 1000 and 2500",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": 1000.0,
+      "b": 2500.0
+    }
+  },
+  {
+    "prompt": "Give me sqrt of 2",
+    "name": "fn_get_square_root",
+    "parameters": {
+      "a": 2.0
+    }
+  },
+  {
+    "prompt": "What\u2019s the square root of 0?",
+    "name": "fn_get_square_root",
+    "parameters": {
+      "a": 0.0
+    }
+  },
+  {
+    "prompt": "Reverse empty string ''",
+    "name": "fn_reverse_string",
+    "parameters": {
+      "s": ""
+    }
+  },
+  {
+    "prompt": "Reverse 'a'",
+    "name": "fn_reverse_string",
+    "parameters": {
+      "s": "a"
+    }
+  },
+  {
+    "prompt": "Greet user named Alex",
+    "name": "fn_greet",
+    "parameters": {
+      "name": "Alex"
+    }
+  },
+  {
+    "prompt": "Say hi to Bob",
+    "name": "fn_greet",
+    "parameters": {
+      "name": "Bob"
+    }
+  },
+  {
+    "prompt": "Replace all letters in '12345' with '*'",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "12345",
+      "regex": ".*",
+      "replacement": "*"
+    }
+  },
+  {
+    "prompt": "Replace everything in 'hello' with '#'",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "hello",
+      "regex": "",
+      "replacement": "#"
+    }
+  },
+  {
+    "prompt": "Replace all vowels in 'Programming is fun' with asterisks",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "Programming is fun",
+      "regex": "([aeiou])",
+      "replacement": "*"
+    }
+  },
+  {
+    "prompt": "Substitute the word 'cat' with 'dog' in 'The cat sat on the mat with another cat'",
     "name": "fn_substitute_string_with_regex",
     "parameters": {
       "source_string": "The cat sat on the mat with another cat",
-      "regex": "dog",
+      "regex": "cat",
       "replacement": "dog"
+    }
+  },
+  {
+    "prompt": "What is the sum of -2 and 3?",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": -2.0,
+      "b": 3.0
+    }
+  },
+  {
+    "prompt": "What is the sum of 265 and 345?",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": 265.0,
+      "b": 345.0
+    }
+  },
+  {
+    "prompt": "Greet shrek",
+    "name": "fn_greet",
+    "parameters": {
+      "name": "shrek"
+    }
+  },
+  {
+    "prompt": "Greet john",
+    "name": "fn_greet",
+    "parameters": {
+      "name": "john"
+    }
+  },
+  {
+    "prompt": "Reverse the string 'hello'",
+    "name": "fn_reverse_string",
+    "parameters": {
+      "s": "hello"
+    }
+  },
+  {
+    "prompt": "Reverse the string 'world'",
+    "name": "fn_reverse_string",
+    "parameters": {
+      "s": "world"
+    }
+  },
+  {
+    "prompt": "What is the square root of 16?",
+    "name": "fn_get_square_root",
+    "parameters": {
+      "a": 16.0
+    }
+  },
+  {
+    "prompt": "Calculate the square root of 144",
+    "name": "fn_get_square_root",
+    "parameters": {
+      "a": 144.0
+    }
+  },
+  {
+    "prompt": "Add 10 and 15",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": 10.0,
+      "b": 15.0
+    }
+  },
+  {
+    "prompt": "What do you get if you add 99 and 1?",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": 99.0,
+      "b": 1.0
+    }
+  },
+  {
+    "prompt": "Sum 1234 and 4321",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": 1234.0,
+      "b": 4321.0
+    }
+  },
+  {
+    "prompt": "Please add 0 and 5",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": 0.0,
+      "b": 5.0
+    }
+  },
+  {
+    "prompt": "Add -5 and 20",
+    "name": "fn_add_numbers",
+    "parameters": {
+      "a": -5.0,
+      "b": 20.0
+    }
+  },
+  {
+    "prompt": "Say hello to Mike",
+    "name": "fn_greet",
+    "parameters": {
+      "name": "Mike"
+    }
+  },
+  {
+    "prompt": "Generate greeting for Anna",
+    "name": "fn_greet",
+    "parameters": {
+      "name": "Anna"
+    }
+  },
+  {
+    "prompt": "Can you greet Christopher?",
+    "name": "fn_greet",
+    "parameters": {
+      "name": "Christopher"
+    }
+  },
+  {
+    "prompt": "I want a greeting message for Kate",
+    "name": "fn_greet",
+    "parameters": {
+      "name": "Kate"
+    }
+  },
+  {
+    "prompt": "Reverse 'OpenAI'",
+    "name": "fn_reverse_string",
+    "parameters": {
+      "s": "OpenAI"
+    }
+  },
+  {
+    "prompt": "Flip the string 'Java'",
+    "name": "fn_reverse_string",
+    "parameters": {
+      "s": "Java"
+    }
+  },
+  {
+    "prompt": "Can you reverse '12345'?",
+    "name": "fn_reverse_string",
+    "parameters": {
+      "s": "12345"
+    }
+  },
+  {
+    "prompt": "Reverse this: 'abcdef'",
+    "name": "fn_reverse_string",
+    "parameters": {
+      "s": "abcdef"
+    }
+  },
+  {
+    "prompt": "Square root of 81",
+    "name": "fn_get_square_root",
+    "parameters": {
+      "a": 81.0
+    }
+  },
+  {
+    "prompt": "What is sqrt of 225?",
+    "name": "fn_get_square_root",
+    "parameters": {
+      "a": 225.0
+    }
+  },
+  {
+    "prompt": "Divide 100 by 5",
+    "name": "fn_divide_numbers",
+    "parameters": {
+      "dividend": 100.0,
+      "divisor": 5.0
+    }
+  },
+  {
+    "prompt": "What is 50 divided by 2?",
+    "name": "fn_divide_numbers",
+    "parameters": {
+      "dividend": 50.0,
+      "divisor": 2.0
+    }
+  },
+  {
+    "prompt": "Calculate 1000 / 25",
+    "name": "fn_divide_numbers",
+    "parameters": {
+      "dividend": 1000.0,
+      "divisor": 25.0
+    }
+  },
+  {
+    "prompt": "What is 17 modulo 5?",
+    "name": "fn_modulo",
+    "parameters": {
+      "a": 17.0,
+      "b": 5.0
+    }
+  },
+  {
+    "prompt": "Get the remainder when 100 is divided by 7",
+    "name": "fn_modulo",
+    "parameters": {
+      "a": 100.0,
+      "b": 7.0
+    }
+  },
+  {
+    "prompt": "Calculate 23 mod 4",
+    "name": "fn_modulo",
+    "parameters": {
+      "a": 23.0,
+      "b": 4.0
+    }
+  },
+  {
+    "prompt": "What is the absolute value of -42?",
+    "name": "fn_absolute_value",
+    "parameters": {
+      "num": -42.0
+    }
+  },
+  {
+    "prompt": "Get absolute value of -3.14",
+    "name": "fn_absolute_value",
+    "parameters": {
+      "num": -3.1
+    }
+  },
+  {
+    "prompt": "Absolute value of 15",
+    "name": "fn_absolute_value",
+    "parameters": {
+      "num": 15.0
+    }
+  },
+  {
+    "prompt": "Concatenate 'Hello' and 'World'",
+    "name": "fn_string_concat",
+    "parameters": {
+      "str1": "Hello",
+      "str2": "World"
+    }
+  },
+  {
+    "prompt": "Combine 'Good' with 'Morning'",
+    "name": "fn_string_concat",
+    "parameters": {
+      "str1": "Good",
+      "str2": "Morning"
+    }
+  },
+  {
+    "prompt": "Join 'Python' and 'Programming'",
+    "name": "fn_string_concat",
+    "parameters": {
+      "str1": "Python",
+      "str2": "Programming"
+    }
+  },
+  {
+    "prompt": "Does 'hello world' contain 'world'?",
+    "name": "fn_string_contains",
+    "parameters": {
+      "source": "hello world",
+      "substring": "world"
+    }
+  },
+  {
+    "prompt": "Check if 'programming' contains 'gram'",
+    "name": "fn_string_contains",
+    "parameters": {
+      "source": "programming",
+      "substring": "gram"
+    }
+  },
+  {
+    "prompt": "Is 'OpenAI' in the string 'OpenAI GPT'?",
+    "name": "fn_string_contains",
+    "parameters": {
+      "source": "OpenAI GPT",
+      "substring": "OpenAI"
+    }
+  },
+  {
+    "prompt": "Split 'apple,banana,cherry' by comma",
+    "name": "fn_string_split",
+    "parameters": {
+      "text": "apple,banana,cherry",
+      "delimiter": ","
+    }
+  },
+  {
+    "prompt": "Split 'one-two-three' by hyphen",
+    "name": "fn_string_split",
+    "parameters": {
+      "text": "one-two-three",
+      "delimiter": "-"
+    }
+  },
+  {
+    "prompt": "Split 'hello world test' by space",
+    "name": "fn_string_split",
+    "parameters": {
+      "text": "hello world test",
+      "delimiter": " "
+    }
+  },
+  {
+    "prompt": "Count vowels in 'hello'",
+    "name": "fn_count_vowels",
+    "parameters": {
+      "text": "hello"
+    }
+  },
+  {
+    "prompt": "How many vowels in 'beautiful'?",
+    "name": "fn_count_vowels",
+    "parameters": {
+      "text": "beautiful"
+    }
+  },
+  {
+    "prompt": "Count vowels in 'programming'",
+    "name": "fn_count_vowels",
+    "parameters": {
+      "text": "programming"
+    }
+  },
+  {
+    "prompt": "Is 'racecar' a palindrome?",
+    "name": "fn_is_palindrome",
+    "parameters": {
+      "text": "racecar"
+    }
+  },
+  {
+    "prompt": "Check if 'madam' is a palindrome",
+    "name": "fn_is_palindrome",
+    "parameters": {
+      "text": "madam"
+    }
+  },
+  {
+    "prompt": "Is 'hello' a palindrome?",
+    "name": "fn_is_palindrome",
+    "parameters": {
+      "text": "hello"
+    }
+  },
+  {
+    "prompt": "Trim whitespace from '  hello  '",
+    "name": "fn_trim_whitespace",
+    "parameters": {
+      "text": "  hello  "
+    }
+  },
+  {
+    "prompt": "Remove leading and trailing spaces from '   world   '",
+    "name": "fn_trim_whitespace",
+    "parameters": {
+      "text": "   world   '"
+    }
+  },
+  {
+    "prompt": "What is the maximum of 10, 25, and 15?",
+    "name": "fn_max_of_three",
+    "parameters": {
+      "a": 10.0,
+      "b": 25.0,
+      "c": 15.0
+    }
+  },
+  {
+    "prompt": "Find max among 100, 50, 75",
+    "name": "fn_max_of_three",
+    "parameters": {
+      "a": 100.0,
+      "b": 50.0,
+      "c": 75.0
+    }
+  },
+  {
+    "prompt": "Maximum of 3, 7, 2",
+    "name": "fn_max_of_three",
+    "parameters": {
+      "a": 3.0,
+      "b": 7.0,
+      "c": 2.0
+    }
+  },
+  {
+    "prompt": "What is the minimum of 10, 25, and 15?",
+    "name": "fn_min_of_three",
+    "parameters": {
+      "a": 10.0,
+      "b": 25.0,
+      "c": 15.0
+    }
+  },
+  {
+    "prompt": "Find min among 100, 50, 75",
+    "name": "fn_min_of_three",
+    "parameters": {
+      "a": 100.0,
+      "b": 50.0,
+      "c": 75.0
+    }
+  },
+  {
+    "prompt": "Minimum of 3, 7, 2",
+    "name": "fn_min_of_three",
+    "parameters": {
+      "a": 3.0,
+      "b": 7.0,
+      "c": 2.0
+    }
+  },
+  {
+    "prompt": "Is 4 even?",
+    "name": "fn_is_even",
+    "parameters": {
+      "num": 4.0
+    }
+  },
+  {
+    "prompt": "Check if 42 is even",
+    "name": "fn_is_even",
+    "parameters": {
+      "num": 42
+    }
+  },
+  {
+    "prompt": "Is 7 even?",
+    "name": "fn_is_even",
+    "parameters": {
+      "num": 7.0
+    }
+  },
+  {
+    "prompt": "Is 7 odd?",
+    "name": "fn_is_odd",
+    "parameters": {
+      "num": 7.0
+    }
+  },
+  {
+    "prompt": "Check if 13 is odd",
+    "name": "fn_is_odd",
+    "parameters": {
+      "num": 13
+    }
+  },
+  {
+    "prompt": "Is 100 odd?",
+    "name": "fn_is_odd",
+    "parameters": {
+      "num": 100
+    }
+  },
+  {
+    "prompt": "Calculate factorial of 5",
+    "name": "fn_factorial",
+    "parameters": {
+      "n": 5.0
+    }
+  },
+  {
+    "prompt": "What is 6 factorial?",
+    "name": "fn_factorial",
+    "parameters": {
+      "n": 6.0
+    }
+  },
+  {
+    "prompt": "Calculate 4!",
+    "name": "fn_multiply_numbers",
+    "parameters": {
+      "a": 4.0,
+      "b": 1.0
+    }
+  },
+  {
+    "prompt": "Is 17 a prime number?",
+    "name": "fn_is_prime",
+    "parameters": {
+      "num": 17
+    }
+  },
+  {
+    "prompt": "Check if 2 is prime",
+    "name": "fn_is_prime",
+    "parameters": {
+      "num": 2.0
+    }
+  },
+  {
+    "prompt": "Is 100 prime?",
+    "name": "fn_is_prime",
+    "parameters": {
+      "num": 100
+    }
+  },
+  {
+    "prompt": "Convert 0 Celsius to Fahrenheit",
+    "name": "fn_celsius_to_fahrenheit",
+    "parameters": {
+      "celsius": 0.0
+    }
+  },
+  {
+    "prompt": "What is 100 Celsius in Fahrenheit?",
+    "name": "fn_celsius_to_fahrenheit",
+    "parameters": {
+      "celsius": 100.0
+    }
+  },
+  {
+    "prompt": "Convert 25 degrees Celsius to Fahrenheit",
+    "name": "fn_celsius_to_fahrenheit",
+    "parameters": {
+      "celsius": 25.0
+    }
+  },
+  {
+    "prompt": "Convert 32 Fahrenheit to Celsius",
+    "name": "fn_celsius_to_fahrenheit",
+    "parameters": {
+      "celsius": 32.0
+    }
+  },
+  {
+    "prompt": "What is 212 Fahrenheit in Celsius?",
+    "name": "fn_celsius_to_fahrenheit",
+    "parameters": {
+      "celsius": 212.0
+    }
+  },
+  {
+    "prompt": "Convert 98.6 degrees Fahrenheit to Celsius",
+    "name": "fn_celsius_to_fahrenheit",
+    "parameters": {
+      "celsius": 98.6
+    }
+  },
+  {
+    "prompt": "Capitalize 'hello world'",
+    "name": "fn_capitalize_first_letter",
+    "parameters": {
+      "text": "hello world"
+    }
+  },
+  {
+    "prompt": "Capitalize first letter of 'python'",
+    "name": "fn_capitalize_first_letter",
+    "parameters": {
+      "text": "python"
+    }
+  },
+  {
+    "prompt": "Make first letter uppercase in 'openai'",
+    "name": "fn_capitalize_first_letter",
+    "parameters": {
+      "text": "openai"
+    }
+  },
+  {
+    "prompt": "Repeat 'x' 3 times",
+    "name": "fn_repeat_string",
+    "parameters": {
+      "text": "x",
+      "times": 3
+    }
+  },
+  {
+    "prompt": "Repeat the string 'abc' 4 times",
+    "name": "fn_repeat_string",
+    "parameters": {
+      "text": "abc",
+      "times": 4
+    }
+  },
+  {
+    "prompt": "2 to the power of 8",
+    "name": "fn_power",
+    "parameters": {
+      "base": 2.0,
+      "exponent": 8.0
+    }
+  },
+  {
+    "prompt": "What is 3 raised to power 4?",
+    "name": "fn_power",
+    "parameters": {
+      "base": 3.0,
+      "exponent": 4.0
+    }
+  },
+  {
+    "prompt": "Calculate 5^3",
+    "name": "fn_power",
+    "parameters": {
+      "base": 5.0,
+      "exponent": 3.0
     }
   }
 ]
