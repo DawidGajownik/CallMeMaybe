@@ -1,21 +1,24 @@
-.PHONY: install run debug clean lint lint-strict
+.PHONY: install run debug clean lint lint-strict reset
 
 install:
-	uv venv
-	uv pip install -r llm_sdk/pyproject.toml
-	uv pip install transformers torch accelerate
+	uv sync
 
 run:
-	uv run python -m main
+	uv run python -m src
 
 debug:
-	uv run python -m pdb main.py
+	uv run python -m pdb -m src
 
 clean:
-	rm -rf __pycache__ .mypy_cache llm_sdk/__pycache__ llm_sdk/llm_sdk/__pycache__ .venv
+	rm -rf __pycache__ .mypy_cache .pytest_cache
+
+reset:
+	rm -rf .venv
 
 lint:
-	uv run flake8 . && uv run mypy . --warn-return-any --warn-unused-ignores --ignore-missing-imports --disallow-untyped-defs --check-untyped-defs
+	uv run flake8 --exclude=.venv,llm_sdk,__pycache__ .
+	uv run mypy src --warn-return-any --warn-unused-ignores --ignore-missing-imports
 
 lint-strict:
-	uv run flake8 . && uv run mypy . --strict
+	uv run flake8 --exclude=.venv,__pycache__ .
+	uv run mypy src --strictdebug

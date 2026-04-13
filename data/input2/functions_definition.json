@@ -67,5 +67,197 @@
     "returns": {
       "type": "string"
     }
+  },
+  {
+    "name": "fn_is_valid_email",
+    "description": "Validate if a string is a valid email address.",
+    "parameters": {
+      "email": {
+        "type": "string"
+      }
+    },
+    "returns": {
+      "type": "boolean"
+    }
+  },
+  {
+    "name": "fn_check_age",
+    "description": "Check if a person is an adult (18 or older).",
+    "parameters": {
+      "age": {
+        "type": "integer"
+      }
+    },
+    "returns": {
+      "type": "boolean"
+    }
+  },
+  {
+    "name": "fn_sum_array",
+    "description": "Calculate the sum of all numbers in an array.",
+    "parameters": {
+      "numbers": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      }
+    },
+    "returns": {
+      "type": "number"
+    }
+  },
+  {
+    "name": "fn_filter_by_age",
+    "description": "Filter a list of people by minimum age.",
+    "parameters": {
+      "people": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "age": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "min_age": {
+        "type": "integer"
+      }
+    },
+    "returns": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  {
+    "name": "fn_create_user",
+    "description": "Create a new user object with provided information.",
+    "parameters": {
+      "user_data": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "is_active": {
+            "type": "boolean"
+          },
+          "age": {
+            "type": "integer"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "returns": {
+      "type": "object"
+    }
+  },
+  {
+    "name": "fn_toggle_flag",
+    "description": "Toggle a boolean flag value.",
+    "parameters": {
+      "flag": {
+        "type": "boolean"
+      }
+    },
+    "returns": {
+      "type": "boolean"
+    }
+  },
+  {
+    "name": "fn_parse_integers",
+    "description": "Parse an array of strings to integers.",
+    "parameters": {
+      "string_numbers": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "returns": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    }
+  },
+  {
+    "name": "fn_get_user_profile",
+    "description": "Retrieve a user profile containing various data types.",
+    "parameters": {
+      "user_id": {
+        "type": "integer"
+      }
+    },
+    "returns": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "username": {
+          "type": "string"
+        },
+        "is_verified": {
+          "type": "boolean"
+        },
+        "score": {
+          "type": "number"
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "fn_count_strings",
+    "description": "Count the number of elements in an array of strings.",
+    "parameters": {
+      "strings": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "returns": {
+      "type": "integer"
+    }
+  },
+  {
+    "name": "fn_calculate_average",
+    "description": "Calculate the average of numbers in an array.",
+    "parameters": {
+      "values": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      }
+    },
+    "returns": {
+      "type": "number"
+    }
   }
 ]

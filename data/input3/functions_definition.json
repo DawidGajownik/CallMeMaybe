@@ -9,6 +9,18 @@
     "returns": { "type": "number" }
   },
   {
+    "name": "fn_check_premium_access",
+    "description": "Check if a user is eligible for premium access based on age and subscription status.",
+    "parameters": {
+      "name": { "type": "string" },
+      "age": {"type": "number"},
+      "is_subscribed": { "type": "boolean" }
+    },
+    "returns": {
+      "type": "boolean"
+    }
+  },
+  {
     "name": "fn_greet",
     "description": "Generate a friendly greeting message for a person by name.",
     "parameters": {

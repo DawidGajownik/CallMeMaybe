@@ -1,10 +1,39 @@
+import os
 import shlex
 import sys
 import json
+from argparse import Namespace
 from cmath import inf
 from typing import List, Any, Tuple, Dict
 from llm_sdk.llm_sdk import Small_LLM_Model
-from objects import Function, State
+from .objects import Function, State
+from pathlib import Path
+import argparse
+
+
+def parse_args() -> Namespace:
+    """parse command line arguments"""
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument(
+        "--functions_definition",
+        type=Path,
+        default=Path("data/input/functions_definition.json"),
+    )
+
+    parser.add_argument(
+        "--input",
+        type=Path,
+        default=Path("data/input/function_calling_tests.json"),
+    )
+
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=Path("data/output/function_calls.json"),
+    )
+
+    return parser.parse_args()
 
 
 def is_float(value: str) -> bool:
@@ -384,12 +413,14 @@ def functions_from_json(functions: Any) -> List[Function]:
     ]
 
 
-def init() -> Tuple[Any, List[Function], str, Small_LLM_Model, List]:
+def init(
+        args: Namespace
+) -> Tuple[Any, List[Function], str, Small_LLM_Model, List]:
     """initialization"""
     try:
-        with open('data/input3/function_calling_tests.json', 'r') as f:
+        with open(args.input) as f:
             calls = json.load(f)
-        with open('data/input3/functions_definition.json', 'r') as f:
+        with open(args.functions_definition, 'r') as f:
             functions_json = json.load(f)
         functions = functions_from_json(functions_json)
         main_prompt = build_prompt(functions)
@@ -426,7 +457,10 @@ def main() -> None:
     2. iterating over prompt calls to create list of JSONs for output
     3. export to JSON file
     """
-    calls, functions, main_prompt, llm, output = init()
+    args = parse_args()
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+
+    calls, functions, main_prompt, llm, output = init(args)
     for call in calls:
         prompt = call.get('prompt')
         reset_functions_params_counter(functions)
@@ -464,8 +498,7 @@ def main() -> None:
             output.append(json.loads(llm.decode(extra_tokens).strip('\n')))
         except json.decoder.JSONDecodeError as e:
             print(e)
-    with open("outputgood.json", "w") as f:
+    os.makedirs("data/output", exist_ok=True)
+
+    with open(args.output, "w") as f:
         json.dump(output, f, indent=2)
-
-
-main()
