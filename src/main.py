@@ -166,7 +166,7 @@ def choose_state(
             current_state, tokens, func,
             arg_finished, arg_match_bool):
         if all_args_ready(func):
-            return State.DONE
+            return State.START
         return State.ARGUMENT_OBJECT_KEY
     elif done_ready(current_state, tokens):
         return State.START
@@ -259,13 +259,13 @@ def allowed_tokens(
     return []
 
 
-def tokens_dict() -> Dict:
+def tokens_dict(prompt: str, llm: Small_LLM_Model) -> Dict:
     """returns empty tokens dict"""
     return {
-        State.START: [],
-        State.PROMPT_KEY: [],
-        State.PROMPT_VALUE: [],
-        State.FUNCTION_KEY: [],
+        State.START: llm.encode("{\"").tolist()[0],
+        State.PROMPT_KEY: llm.encode("prompt\": \"").tolist()[0],
+        State.PROMPT_VALUE: llm.encode(f'{prompt}", ').tolist()[0],
+        State.FUNCTION_KEY: llm.encode("\"name\": \"").tolist()[0],
         State.FUNCTION_VALUE: [],
         State.ARGUMENTS_KEY: [],
         State.ARGUMENT_OBJECT_KEY: {},
@@ -466,10 +466,11 @@ def main() -> None:
         reset_functions_params_counter(functions)
         final_prompt = build_final_prompt(main_prompt, prompt)
         tokens = final_prompt_to_tokens(llm, final_prompt)
-        extra_tokens_dict = tokens_dict()
-        extra_tokens: List = []
+        extra_tokens_dict = tokens_dict(prompt, llm)
+        extra_tokens = tokens_dict_to_list(
+            llm, prompt, extra_tokens_dict)
         i = 0
-        state = State.START
+        state = State.FUNCTION_VALUE
         selected_fn: Function | None = None
         while i < 150:
             logits = llm.get_logits_from_input_ids(tokens+extra_tokens)
@@ -488,12 +489,19 @@ def main() -> None:
                 print(e)
             if state == State.ARGUMENTS_KEY:
                 selected_fn = set_function(functions, llm.decode(extra_tokens))
-            # print(state, llm.decode(extra_tokens))
+            print(state, llm.decode(extra_tokens))
             state = choose_state(
                 state, llm.decode(extra_tokens), functions, selected_fn,
                 argument_finished(selected_fn, extra_tokens_dict, llm),
                 arg_matches_bool(selected_fn, extra_tokens_dict, llm),
                 prompt)
+            if state == State.START:
+                if not done_ready(state, llm.decode(extra_tokens)):
+                    extra_tokens_dict[State.DONE] = llm.encode("}}").tolist()[0]
+                    extra_tokens = tokens_dict_to_list(
+                        llm, prompt, extra_tokens_dict)
+                state = State.FUNCTION_VALUE
+                i = 150
         try:
             output.append(json.loads(llm.decode(extra_tokens).strip('\n')))
         except json.decoder.JSONDecodeError as e:
