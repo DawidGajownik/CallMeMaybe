@@ -488,7 +488,7 @@ def main() -> None:
                 print(e)
             if state == State.ARGUMENTS_KEY:
                 selected_fn = set_function(functions, llm.decode(extra_tokens))
-            print(state, llm.decode(extra_tokens))
+            # print(state, llm.decode(extra_tokens))
             state = choose_state(
                 state, llm.decode(extra_tokens), functions, selected_fn,
                 argument_finished(selected_fn, extra_tokens_dict, llm),
