@@ -90,7 +90,7 @@ def argument_key_ready(state: State, tokens: str) -> bool:
     """checks if argument key state is already created"""
     return (
             state == State.ARGUMENTS_KEY
-            and '", "parameters": {"' in tokens)
+            and '", "parameters": {' in tokens)
 
 
 def arg_obj_key_ready(
@@ -115,6 +115,7 @@ def arg_obj_val_ready(
         arg_match_bool: bool
 ) -> bool:
     """checks if argument object value state is already created"""
+
     return (
             state == State.ARGUMENT_OBJECT_ARGUMENT
             and (
@@ -264,7 +265,9 @@ def tokens_dict(prompt: str, llm: Small_LLM_Model) -> Dict:
     return {
         State.START: llm.encode("{\"").tolist()[0],
         State.PROMPT_KEY: llm.encode("prompt\": \"").tolist()[0],
-        State.PROMPT_VALUE: llm.encode(f'{prompt}", ').tolist()[0],
+        State.PROMPT_VALUE: llm.encode(
+            f'{prompt.replace('"', '\\"')}", '
+        ).tolist()[0],
         State.FUNCTION_KEY: llm.encode("\"name\": \"").tolist()[0],
         State.FUNCTION_VALUE: [],
         State.ARGUMENTS_KEY: [],
@@ -290,22 +293,25 @@ def arg_matches_bool(
 
 
 def argument_finished(
-        selected_fn: Function | None, extra_tokens_dict: Dict,
+        selected_fn: Function | None, tokens_dict: Dict,
         llm: Small_LLM_Model) -> bool:
     """checks if argument is closed with double quote"""
     if selected_fn is not None:
         key = selected_fn.get_actual_param()
-        if key[0] in extra_tokens_dict[State.ARGUMENT_OBJECT_ARGUMENT]:
+        if key[0] in tokens_dict[State.ARGUMENT_OBJECT_ARGUMENT]:
             decoded = llm.decode(
-                extra_tokens_dict[State.ARGUMENT_OBJECT_ARGUMENT][key[0]]
+                tokens_dict[State.ARGUMENT_OBJECT_ARGUMENT][key[0]]
             ).strip()
             if decoded.endswith('"') and len(decoded) > 4:
+                decoded = decoded.replace('", "', '"')
+                tokens = tokens_dict[State.ARGUMENT_OBJECT_ARGUMENT]
+                tokens[key[0]] = llm.encode(decoded)[0].tolist()
                 return True
     return False
 
 
 def build_final_prompt(main_prompt: str, prompt: str) -> str:
-    "returning final prompt sent to llm"
+    """returning final prompt sent to llm"""
     return main_prompt + f"\nUser: {prompt}\nOutput:"
 
 
@@ -450,6 +456,36 @@ def reset_functions_params_counter(functions: List[Function]) -> None:
         function.reset_param()
 
 
+def hardcode_tokens(
+        tokens: Dict, state: State,
+        llm: Small_LLM_Model, fn: Function | None,
+) -> Dict:
+    """hardcoding output when it's not needed to call LLM"""
+    if state == State.ARGUMENTS_KEY:
+        tokens[state] = llm.encode(' "parameters": {').tolist()[0]
+    if state == State.ARGUMENT_OBJECT_KEY and fn is not None:
+        prefix = ""
+        if fn.param != 0 and tokens[State.ARGUMENT_OBJECT_ARGUMENT]:
+            prefix = ", "
+        tokens[state][fn.param] = llm.encode(
+            f'{prefix}"{fn.get_actual_param()[0]}":'
+        ).tolist()[0]
+    return tokens
+
+
+def needed_to_call_llm(state: State) -> bool:
+    """checks if llm is needed to create this part of output"""
+    return state in [State.FUNCTION_VALUE, State.ARGUMENT_OBJECT_ARGUMENT]
+
+
+def json_seems_to_be_finished(
+        llm: Small_LLM_Model,
+        extra_tokens: List[int]
+) -> bool:
+    """name is enough :)"""
+    return "}}" in llm.decode(extra_tokens)
+
+
 def main() -> None:
     """
     main function
@@ -473,23 +509,27 @@ def main() -> None:
         state = State.FUNCTION_VALUE
         selected_fn: Function | None = None
         while i < 150:
-            logits = llm.get_logits_from_input_ids(tokens+extra_tokens)
             try:
-                token = get_best_token(
-                    llm, state, functions, selected_fn,
-                    prompt, logits, extra_tokens_dict)
-                extra_tokens_dict = add_token_to_dict(
-                    state, selected_fn, token, extra_tokens_dict)
+                if needed_to_call_llm(state):
+                    logits = llm.get_logits_from_input_ids(tokens+extra_tokens)
+                    token = get_best_token(
+                        llm, state, functions, selected_fn,
+                        prompt, logits, extra_tokens_dict)
+                    extra_tokens_dict = add_token_to_dict(
+                        state, selected_fn, token, extra_tokens_dict)
+                else:
+                    extra_tokens_dict = hardcode_tokens(
+                        extra_tokens_dict, state, llm, selected_fn)
                 extra_tokens = tokens_dict_to_list(
                     llm, prompt, extra_tokens_dict)
                 i += 1
-                if "}}" in llm.decode(extra_tokens):
+                if json_seems_to_be_finished(llm, extra_tokens):
                     i = 150
             except ValueError as e:
                 print(e)
             if state == State.ARGUMENTS_KEY:
                 selected_fn = set_function(functions, llm.decode(extra_tokens))
-            print(state, llm.decode(extra_tokens))
+            # print(state, llm.decode(extra_tokens))
             state = choose_state(
                 state, llm.decode(extra_tokens), functions, selected_fn,
                 argument_finished(selected_fn, extra_tokens_dict, llm),
@@ -497,7 +537,8 @@ def main() -> None:
                 prompt)
             if state == State.START:
                 if not done_ready(state, llm.decode(extra_tokens)):
-                    extra_tokens_dict[State.DONE] = llm.encode("}}").tolist()[0]
+                    extra_tokens_dict[State.DONE]\
+                        = llm.encode("}}").tolist()[0]
                     extra_tokens = tokens_dict_to_list(
                         llm, prompt, extra_tokens_dict)
                 state = State.FUNCTION_VALUE
@@ -507,6 +548,5 @@ def main() -> None:
         except json.decoder.JSONDecodeError as e:
             print(e)
     os.makedirs("data/output", exist_ok=True)
-
     with open(args.output, "w") as f:
         json.dump(output, f, indent=2)

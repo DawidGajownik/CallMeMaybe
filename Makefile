@@ -16,7 +16,7 @@ reset:
 	rm -rf .venv
 
 lint:
-	uv run flake8 --exclude=.venv,llm_sdk,__pycache__ .
+	uv run flake8 --exclude=.venv,llm_sdk,moulinette,__pycache__ .
 	uv run mypy src --warn-return-any --warn-unused-ignores --ignore-missing-imports
 
 lint-strict:

@@ -1,26 +1,10 @@
 [
   {
-    "prompt": "What is the sum of three and seven?",
+    "prompt": "What is the sum of 2 and 3?",
     "name": "fn_add_numbers",
     "parameters": {
-      "a": 3.0,
-      "b": 7.0
-    }
-  },
-  {
-    "prompt": "What is the sum of kebab and burger?",
-    "name": "fn_add_numbers",
-    "parameters": {
-      "a": 10.0,
-      "b": 20.0
-    }
-  },
-  {
-    "prompt": "What is the sum of -999999999999999999999 and 9999999999999999999?",
-    "name": "fn_add_numbers",
-    "parameters": {
-      "a": -1e+21,
-      "b": 1e+21
+      "a": 2.0,
+      "b": 3.0
     }
   },
   {
@@ -32,62 +16,71 @@
     }
   },
   {
-    "prompt": "Greet somebody",
+    "prompt": "Greet shrek",
     "name": "fn_greet",
     "parameters": {
-      "name": "somebody"
+      "name": "shrek"
     }
   },
   {
-    "prompt": "Greet a7",
+    "prompt": "Greet john",
     "name": "fn_greet",
     "parameters": {
-      "name": "a7"
+      "name": "john"
     }
   },
   {
-    "prompt": "Reverse the string",
+    "prompt": "Reverse the string 'hello'",
     "name": "fn_reverse_string",
     "parameters": {
-      "s": "string"
+      "s": "hello"
     }
   },
   {
-    "prompt": "Reverse the string 'Reverse the string'",
+    "prompt": "Reverse the string 'world'",
     "name": "fn_reverse_string",
     "parameters": {
-      "s": "Reverse the string"
+      "s": "world"
     }
   },
   {
-    "prompt": "What is the square root of qwerty?",
+    "prompt": "What is the square root of 16?",
     "name": "fn_get_square_root",
     "parameters": {
-      "a": 1000000.0
+      "a": 16.0
     }
   },
   {
-    "prompt": "Calculate the square root of zxcvbn",
+    "prompt": "Calculate the square root of 144",
     "name": "fn_get_square_root",
     "parameters": {
-      "a": 1234567890.0
+      "a": 144.0
     }
   },
   {
-    "prompt": "Replace all vowels in '123456' with comas",
+    "prompt": "Replace all numbers in \"Hello 34 I'm 233 years old\" with NUMBERS",
     "name": "fn_substitute_string_with_regex",
     "parameters": {
-      "source_string": "123456",
-      "regex": "([aeiouAEIOU])",
-      "replacement": ","
+      "source_string": "Hello 34 I'm 233 years old",
+      "regex": "\\d+",
+      "replacement": "NUMBERS"
     }
   },
   {
-    "prompt": "Substitute the word 'dog' with 'dog' in 'The cat sat on the mat with another cat'",
+    "prompt": "Replace all vowels in 'Programming is fun' with asterisks",
+    "name": "fn_substitute_string_with_regex",
+    "parameters": {
+      "source_string": "Programming is fun",
+      "regex": "([aeiouAEIOU])",
+      "replacement": "*"
+    }
+  },
+  {
+    "prompt": "Substitute the word 'cat' with 'dog' in 'The cat sat on the mat with another cat'",
     "name": "fn_substitute_string_with_regex",
     "parameters": {
       "source_string": "The cat sat on the mat with another cat",
-      "regex": "dog",
+      "regex": "cat",
       "replacement": "dog"
     }
   }
